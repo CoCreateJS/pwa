@@ -76,7 +76,7 @@ function init() {
 		window.deferredPrompt = null;
 	});
 
-	if ("serviceWorker" in navigator) {
+	if (navigator?.serviceWorker) {
 		let workerPath;
 		if (window.CoCreateConfig && window.CoCreateConfig.serviceWorker)
 			workerPath = window.CoCreateConfig.serviceWorker;
