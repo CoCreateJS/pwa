@@ -37,10 +37,10 @@
   },
   "main": "./src/index.js",
   "dependencies": {
-    "@cocreate/local-storage": "^1.19.0"
+    "@cocreate/local-storage": "^1.20.0"
   },
   "devDependencies": {
-    "@cocreate/webpack": "^1.8.0"
+    "@cocreate/webpack": "^1.9.0"
   },
   "allowScripts": {
     "@cocreate/actions@1.21.4": true,
