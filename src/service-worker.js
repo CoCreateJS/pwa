@@ -32,6 +32,51 @@ const queryString = self.location.search;
 const queryParams = new URLSearchParams(queryString);
 let cacheType = queryParams.get('cache');
 
+// Private responses use the browser HTTP cache, not the worker's shared asset cache.
+function canUseAssetCache(response) {
+    if (!response) return false;
+    const policy = response.headers.get("Cache-Control") || "";
+    if (!/(?:^|,)\s*public\s*(?:,|$)/i.test(policy) ||
+        /(?:^|,)\s*(?:private|no-cache|no-store|must-revalidate|proxy-revalidate)\b/i.test(policy)) return false;
+    const age = policy.match(/(?:^|,)\s*max-age=(\d+)\s*(?:,|$)/i);
+    const date = Date.parse(response.headers.get("Date"));
+    const elapsed = (Date.now() - date) / 1000 + Number(response.headers.get("Age") || 0);
+    return age && Number.isFinite(elapsed) && elapsed < Number(age[1]);
+}
+
+// Ask the requesting page for its current Config token; do not persist a second copy.
+async function applySessionToken(event, request = event.request) {
+    if (new URL(request.url).origin !== self.location.origin) return request;
+    if (request.headers.has("Authorization")) return request;
+    const client = event.clientId && await self.clients.get(event.clientId);
+    if (!client) return request;
+
+    const token = await new Promise((resolve) => {
+        const channel = new MessageChannel();
+        const finish = (value) => {
+            clearTimeout(timeout);
+            channel.port1.close();
+            channel.port2.close();
+            resolve(value);
+        };
+        const timeout = setTimeout(() => finish(null), 1000);
+        channel.port1.onmessage = (message) => finish(message.data?.token);
+        try {
+            client.postMessage({ action: "getSessionToken" }, [channel.port2]);
+        } catch {
+            finish(null);
+        }
+    });
+    if (typeof token !== "string" || !token) return request;
+    const headers = new Headers(request.headers);
+    headers.set("Authorization", `Bearer ${token}`);
+    return new Request(request, {
+        headers,
+        // Native image requests use no-cors, which strips Authorization.
+        ...(request.mode === "no-cors" ? { mode: "same-origin" } : {})
+    });
+}
+
 self.addEventListener("install", (e) => {
     console.log('Service Worker Installing')
     self.skipWaiting();
@@ -52,12 +97,19 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener("fetch", async (e) => {
-    if (!(e.request.url.indexOf('http') === 0) || e.request.method === 'POST') return;
+    if (!(e.request.url.indexOf('http') === 0)) return;
+    if (e.request.method !== 'GET') {
+        e.respondWith(applySessionToken(e).then(request => fetch(request)));
+        return;
+    }
 
     e.respondWith(
         caches
             .match(e.request)
             .then(async (cacheResponse) => {
+                    if (!canUseAssetCache(cacheResponse)) cacheResponse = null;
+                const request = await applySessionToken(e);
+                if (request.headers.has("Authorization")) return fetch(request);
                 let fetchedOn
                 if (cacheResponse && cacheType !== 'false') {
                     fetchedOn = cacheResponse.headers.get('fetched-on')
@@ -66,7 +118,7 @@ self.addEventListener("fetch", async (e) => {
                 }
 
 
-                if (!navigator.onLine || !!cacheResponse && cacheType !== 'false' && (!fetchedOn || fetchedOn > updatedOn)) {
+                if ((!navigator.onLine && cacheResponse) || !!cacheResponse && cacheType !== 'false' && (!fetchedOn || fetchedOn > updatedOn)) {
                     const organization = cacheResponse.headers.get('organization')
                     console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
                     const lastModified = cacheResponse.headers.get('last-modified')
@@ -76,6 +128,7 @@ self.addEventListener("fetch", async (e) => {
                     console.log('fetching fetchOn less', fetchedOn > updatedOn)
 
                     const networkResponse = await fetch(e.request);
+                        if (!canUseAssetCache(networkResponse)) return networkResponse;
 
                     if (!organization_id)
                         organization_id = networkResponse.headers.get('organization')
