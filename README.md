@@ -1,6 +1,6 @@
 # CoCreate-pwa
 
-A simple pwa component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/pwa)
+A focused install component for Progressive Web Apps. It captures the browser install prompt and lets an application present its own install button. Service workers and other browser APIs are separate CoCreate components. Take it for a spin in our [playground!](https://cocreate.app/docs/pwa)
 
 ![GitHub file size in bytes](https://img.shields.io/github/size/CoCreate-app/CoCreate-pwa/dist/CoCreate-pwa.min.js?label=minified%20size&style=for-the-badge)
 ![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-pwa?style=for-the-badge)

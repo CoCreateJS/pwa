@@ -1,78 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <title>Im the page title</title>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width; initial-scale=1; viewport-fit=cover" />
-        <!-- import the webpage's stylesheet -->
-        <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="./css/style.css" />
-        <!-- Manifest -->
-        <link rel="manifest" href="./manifest.webmanifest" />
-        <!--<meta name="theme-color" content="red">-->
-
-        <!--<non-transparent PNG icon sized at 180 by 180 >-->
-        <link rel="apple-touch-icon" href="/images/icons/ios.png" />
-
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <!--<hides status bar for a full screen experience omn ios only>-->
-        <meta
-            name="apple-mobile-web-app-status-bar-style"
-            content="black-translucent" />
-
-        <link rel="apple-touch-startup-image" href="ios-startup.png" />
-
-        <link
-            rel="apple-touch-startup-image"
-            href="ios-startup.png"
-            media="orientation: portrait" />
-        <link
-            rel="apple-touch-startup-image"
-            href="ios-startup-landscape.png"
-            media="orientation: landscape" />
-
-        <link rel="manifest" href="/manifest.webmanifest" />
-    </head>
-
-    <body>
-        <nav class="navbar navbar-expand-sm bg-dark">
-            <!-- Links -->
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./pages/test1.html">Test1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./pages/test2.html">Test 2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./pages/test3.html">Test 3</a>
-                </li>
-            </ul>
-        </nav>
-        <p id="requireHTTPS" class="hidden">
-            <b>STOP!</b> This page <b>must</b> be served over HTTPS. Please
-            <a>reload this page via HTTPS</a>.
-        </p>
-
-        <p>To Make me installable, follow the</p>
-
-        <button id="cacheBtn">Uncache</button>
-
-        <!-- Install button, hidden by default -->
-
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CoCreate PWA Install Demo</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+</head>
+<body>
+    <main>
+        <h1>Install this app</h1>
+        <p>The install button appears when the browser offers an install prompt.</p>
         <button actions="install" type="button" hidden>Install</button>
-
-        <!-- <script src="../src/index.js" defer></script> -->
-        <!-- <script src="../dist/CoCreate-pwa.js" defer></script> -->
-        <!-- <script src="https://CoCreate.app/dist/CoCreate.js"></script> -->
-    </body>
+    </main>
+    <script src="../dist/CoCreate-pwa.js"></script>
+</body>
 </html>
