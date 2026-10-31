@@ -12,8 +12,8 @@ module.exports = {
                 "pathname": "/docs/pwa/index.html",
                 "src": "{{./docs/index.html}}",
                 "host": [
-                    "cocreate.app",
-                    "general.cocreate.app"
+                    "CoCreateJS.com",
+                    "general.CoCreateJS.com"
                 ],
                 "directory": "pwa",
                 "content-type": "{{content-type}}",
