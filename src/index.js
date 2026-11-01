@@ -4,6 +4,11 @@ const selector = '[actions*="install"]';
 const buttons = new WeakSet();
 let deferredPrompt;
 
+/**
+ *
+ * @public
+ * @environment client
+ */
 function init(root = document) {
 	const elements = [];
 	if (root?.matches?.(selector)) elements.push(root);
@@ -17,6 +22,11 @@ function init(root = document) {
 	}
 }
 
+/**
+ *
+ * @public
+ * @environment client
+ */
 async function install(button) {
 	const promptEvent = deferredPrompt;
 	if (!promptEvent) return;
@@ -51,3 +61,33 @@ observer.init({
 init();
 
 export default { init, install };
+
+/**
+ *
+ * @name hidden
+ * @kind member
+ * @attribute
+ * @environment client
+ */
+
+/**
+ * A simple pwa component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.
+ *
+ * @module pwa
+ * @environment client
+ */
+
+/**
+ * Declarative selectors recognized by this module.
+ *
+ * @name declarative-selectors
+ * @kind member
+ * @selectors
+ * @environment client
+ * @example
+ * ```json
+ * [
+ *   "[actions*=\"install\"]"
+ * ]
+ * ```
+ */
