@@ -1,3 +1,29 @@
+# [1.23.0](https://github.com/CoCreateJS/pwa/compare/v1.22.4...v1.23.0) (2026-11-02)
+
+
+### Bug Fixes
+
+* add Deno specific entries to .gitignore ([9507a63](https://github.com/CoCreateJS/pwa/commit/9507a639bc093eef28f7737459247fb8d29ac181))
+* bump [@cocreate](https://github.com/cocreate) dependencies ([f77e0c8](https://github.com/CoCreateJS/pwa/commit/f77e0c8249251c1c87dce420b1d8cd9db6c7dc5d))
+* bump dependencies ([e16db26](https://github.com/CoCreateJS/pwa/commit/e16db26f42d5e0053f0eaa773d2c94a9e707036c))
+* bump package versions ([ba9716f](https://github.com/CoCreateJS/pwa/commit/ba9716ffca1e57cd8088f227f02ab770f999c610))
+* bump versions ([9bb031b](https://github.com/CoCreateJS/pwa/commit/9bb031bc795d6f710f233fa5ca005f43a40b6c9f))
+* bump versions ([9811b0a](https://github.com/CoCreateJS/pwa/commit/9811b0ae24a599f24ee3e2a08b54afd3947261af))
+* Check for serviceWorker support before registering ([9267ad9](https://github.com/CoCreateJS/pwa/commit/9267ad97b07cf26f82e02983934bd395bb156bc1))
+* remove trailing slash from node_modules entry in .gitignore ([2765067](https://github.com/CoCreateJS/pwa/commit/2765067d1ebbcfbd7548459fa127df5638210322))
+* removed post install and add add packages to apprved list ([3b59f1c](https://github.com/CoCreateJS/pwa/commit/3b59f1cce5c69224e1535487b21fc428a56592aa))
+* semantic version handling ([9639787](https://github.com/CoCreateJS/pwa/commit/9639787afc1b0f16460dba007aa418639a8f86b1))
+* set default branch to main ([282f561](https://github.com/CoCreateJS/pwa/commit/282f561613adfbcd959b184dd72e0ce8fdcec57f))
+* update git url ([dda6a86](https://github.com/CoCreateJS/pwa/commit/dda6a86ab8279a7b12f203dc9c0c3b2fa54ec237))
+* workflow ([453fc80](https://github.com/CoCreateJS/pwa/commit/453fc80e643e5d3134b52b008bd2be974ffc0626))
+* workflow ([4a34993](https://github.com/CoCreateJS/pwa/commit/4a34993f3055fe44a1e26138d61e013263fc0f1f))
+
+
+### Features
+
+* replace uuid import and usage with utils ([2992b46](https://github.com/CoCreateJS/pwa/commit/2992b46ed46c05897f712eeb34988780ebe556b2))
+* update automated workflow and release configuration for improved semantic release handling ([158a0a5](https://github.com/CoCreateJS/pwa/commit/158a0a52b0dc487e715e5aaefbc4aa98d59ea9fd))
+
 ## [1.22.4](https://github.com/CoCreateJS/CoCreate-pwa/compare/v1.22.3...v1.22.4) (2025-12-25)
 
 
