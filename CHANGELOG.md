@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/CoCreateJS/pwa/compare/v1.23.0...v2.0.0) (2026-11-02)
+
+
+### chore
+
+* record package identity migration as breaking ([f2bcf51](https://github.com/CoCreateJS/pwa/commit/f2bcf519d7a1cdb61da3973cd9cd9be92175daa3))
+
+
+### BREAKING CHANGES
+
+* Consumers must install @cocreate/pwa and use the renamed CoCreateJS repository identity; the previous package and repository identities are no longer supported.
+
 # [1.23.0](https://github.com/CoCreateJS/pwa/compare/v1.22.4...v1.23.0) (2026-11-02)
 
 
