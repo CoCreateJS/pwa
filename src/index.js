@@ -65,8 +65,7 @@ export default { init, install };
 /**
  *
  * @name hidden
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment client
  */
 
