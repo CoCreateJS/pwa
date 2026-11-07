@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/CoCreateJS/pwa/compare/v2.0.1...v2.0.2) (2026-11-07)
+
+
+### Bug Fixes
+
+* bump CoCreate dependency versions ([c710dd5](https://github.com/CoCreateJS/pwa/commit/c710dd5b5adf6e783cbca39d9df895ab873d9ead))
+
 ## [2.0.1](https://github.com/CoCreateJS/pwa/compare/v2.0.0...v2.0.1) (2026-11-05)
 
 
